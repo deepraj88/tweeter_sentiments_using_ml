@@ -17,12 +17,8 @@ auth.set_access_token(access_key, access_secret)
 # Creation of the actual interface, using authentication
 api = tweepy.API(auth)
 
-for status in tweepy.Cursor(api.user_timeline, screen_name='@CNN', tweet_mode="extended").items():
+for status in tweepy.Cursor(api.user_timeline, screen_name='@realDonaldTrump', tweet_mode="extended").items():
     print(status.full_text)
-    print(status.created_at)
-    print(status.favorite_count)
-    print(status.retweet_count)
-    print(status.id_str)
     
 #def get_all_tweets(screen_name):
 #    #Twitter only allows access to a users most recent 3240 tweets with this method
@@ -36,7 +32,7 @@ for status in tweepy.Cursor(api.user_timeline, screen_name='@CNN', tweet_mode="e
 #    alltweets = []  
 #
 #    #make initial request for most recent tweets (200 is the maximum allowed count)
-#    new_tweets = api.user_timeline(screen_name = screen_name)
+#    new_tweets = api.user_timeline(screen_name = screen_name,count=280)
 #
 #    #save most recent tweets
 #    alltweets.extend(new_tweets)
@@ -49,7 +45,7 @@ for status in tweepy.Cursor(api.user_timeline, screen_name='@CNN', tweet_mode="e
 #        print ("getting tweets before %s" % (oldest))
 #
 #        #all subsiquent requests use the max_id param to prevent duplicates
-#        new_tweets = api.user_timeline(screen_name = screen_name,max_id=oldest)
+#        new_tweets = api.user_timeline(screen_name = screen_name,count=200,max_id=oldest)
 #
 #        #save most recent tweets
 #        alltweets.extend(new_tweets)
@@ -60,12 +56,12 @@ for status in tweepy.Cursor(api.user_timeline, screen_name='@CNN', tweet_mode="e
 #        print ("...%s tweets downloaded so far" % (len(alltweets)))
 #
 #    #transform the tweepy tweets into a 2D array that will populate the csv 
-#    outtweets = [[tweet.id_str, tweet.created_at, tweet.favorite_count, tweet.retweet_count, tweet.full_text] for tweet in alltweets]
+#    outtweets = [[tweet.id_str, tweet.created_at, tweet.text.encode("utf-8")] for tweet in alltweets]
 #
 #    #write the csv  
 #    with open('%s_tweets.csv' % screen_name, 'w') as f:
 #        writer = csv.writer(f)
-#        writer.writerow(["id","Favourite", "retweet", "created_at","text"])
+#        writer.writerow(["id","created_at","text"])
 #        writer.writerows(outtweets)
 #
 #    pass
