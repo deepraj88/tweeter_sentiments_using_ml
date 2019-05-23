@@ -9,4 +9,4 @@ To train this model, we also need an output matrix. And output will be generated
 The actual machine learning classifier will use bag of word approach using **Multinomial Naive Bayes classifier with TF-IDF optimization** for better accuracy. 
 
 
-_**UPDATE**: Since Twitter has put a lot of restriction on it's API regarding the amound of data one can extract, we aren't getting enough data to make a workable machine learning model. More so, associating comments with a particular tweet is challenging and not directly accessible. Hence, **we are stuck at this point.**_
+_**UPDATE**: Since Twitter has put a lot of restriction on it's API regarding the amount of data one can extract, we aren't getting enough data to make a workable machine learning model. More so, associating comments with a particular tweet is challenging and not directly accessible. Hence, **we are stuck at this point.**_
